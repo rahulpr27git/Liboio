@@ -21,7 +21,6 @@ public interface MainMVP {
 
     interface IMainPresenter<V extends IMainView> extends IBasePresenter<V> {
         void loadPlatforms();
-        void onDestroy();
     }
 
     interface IMainRepositoryListener {

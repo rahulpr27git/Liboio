@@ -2,8 +2,10 @@ package com.dev.rahul.liboio.ui.activity.main;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.dev.rahul.liboio.R;
 import com.dev.rahul.liboio.pojo.Platforms;
@@ -18,6 +20,8 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements MainMVP.IMainView {
 
+    @BindView(R.id.swipeRefresh)
+    SwipeRefreshLayout swipeRefresh;
     @BindView(R.id.recyclerPlatforms)
     RecyclerView recyclerPlatforms;
 
@@ -27,6 +31,26 @@ public class MainActivity extends BaseActivity implements MainMVP.IMainView {
     @Override
     public int getLayoutRes() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    public int getFragmentContainerId() {
+        return 0;
+    }
+
+    @Override
+    public SwipeRefreshLayout getSwipeRefreshView() {
+        return swipeRefresh;
+    }
+
+    @Override
+    public View getRetryView() {
+        return null;
+    }
+
+    @Override
+    public View getDataView() {
+        return null;
     }
 
     @Override

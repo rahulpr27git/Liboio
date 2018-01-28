@@ -17,7 +17,7 @@ import io.reactivex.schedulers.Schedulers;
 public class MainRepository implements MainMVP.IMainRepositoryListener {
     @Override
     public Single<List<Platforms>> getPlatforms() {
-        return LibrariesService.LIBRARIES_SERVICE.getPlatforms(Libraries.API_KEY)
+        return LibrariesService.LIBRARIES_SERVICE.getPlatforms(Libraries.getAPIKey())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

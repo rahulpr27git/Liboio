@@ -8,4 +8,5 @@ public interface IBasePresenter<V extends IBaseView> {
 
     void onAttach(V baseView);
     void onDetach();
+    void onDestroy();
 }

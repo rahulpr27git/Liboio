@@ -7,7 +7,7 @@ import com.dev.rahul.liboio.ui.base.IBaseAdapterPresenter;
  * Created by rahul on 20/1/18.
  */
 
-public interface PlatformAdapterMVP {
+public interface PlatformsAdapterMVP {
 
     interface IPlatformAdapterView {
 

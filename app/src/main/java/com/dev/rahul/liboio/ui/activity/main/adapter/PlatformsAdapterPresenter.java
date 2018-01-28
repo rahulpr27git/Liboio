@@ -12,7 +12,7 @@ import java.util.List;
 
 public class PlatformsAdapterPresenter<T extends PlatformsAdapter.PlatformHolder, E extends Platforms>
         extends BaseAdapterPresenter<T,E>
-        implements PlatformAdapterMVP.IPlatformsAdapterPresenter<T,E> {
+        implements PlatformsAdapterMVP.IPlatformsAdapterPresenter<T,E> {
 
     public PlatformsAdapterPresenter(List<E> list) {
         super(list);

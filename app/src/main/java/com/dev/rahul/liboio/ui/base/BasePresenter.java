@@ -4,7 +4,7 @@ package com.dev.rahul.liboio.ui.base;
  * Created by rahul on 4/1/18.
  */
 
-public class BasePresenter<V extends IBaseView> implements IBasePresenter<V> {
+public abstract class BasePresenter<V extends IBaseView> implements IBasePresenter<V> {
 
     private V baseView;
 

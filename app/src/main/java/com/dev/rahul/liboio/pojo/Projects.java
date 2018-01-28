@@ -40,5 +40,134 @@ public class Projects {
     private List<String> keywords;
 
     @SerializedName("latest_stable_release")
-    private List<LatestStableRelease> latestStableReleaseList;
+    private LatestStableRelease latestStableReleaseList;
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPlatform() {
+        return platform;
+    }
+
+    public void setPlatform(String platform) {
+        this.platform = platform;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getHomeapage() {
+        return homeapage;
+    }
+
+    public void setHomeapage(String homeapage) {
+        this.homeapage = homeapage;
+    }
+
+    public String getRepositoryUrl() {
+        return repositoryUrl;
+    }
+
+    public void setRepositoryUrl(String repositoryUrl) {
+        this.repositoryUrl = repositoryUrl;
+    }
+
+    public List<String> getNormalizedLicenses() {
+        return normalizedLicenses;
+    }
+
+    public void setNormalizedLicenses(List<String> normalizedLicenses) {
+        this.normalizedLicenses = normalizedLicenses;
+    }
+
+    public Integer getRank() {
+        return rank;
+    }
+
+    public void setRank(Integer rank) {
+        this.rank = rank;
+    }
+
+    public String getLatestReleasePublishedAt() {
+        return latestReleasePublishedAt;
+    }
+
+    public void setLatestReleasePublishedAt(String latestReleasePublishedAt) {
+        this.latestReleasePublishedAt = latestReleasePublishedAt;
+    }
+
+    public String getLatestReleaseNumber() {
+        return latestReleaseNumber;
+    }
+
+    public void setLatestReleaseNumber(String latestReleaseNumber) {
+        this.latestReleaseNumber = latestReleaseNumber;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getPackageManagerUrl() {
+        return packageManagerUrl;
+    }
+
+    public void setPackageManagerUrl(String packageManagerUrl) {
+        this.packageManagerUrl = packageManagerUrl;
+    }
+
+    public Integer getStars() {
+        return stars;
+    }
+
+    public void setStars(Integer stars) {
+        this.stars = stars;
+    }
+
+    public Integer getForks() {
+        return forks;
+    }
+
+    public void setForks(Integer forks) {
+        this.forks = forks;
+    }
+
+    public List<String> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(List<String> keywords) {
+        this.keywords = keywords;
+    }
+
+    public LatestStableRelease getLatestStableReleaseList() {
+        return latestStableReleaseList;
+    }
+
+    public void setLatestStableReleaseList(LatestStableRelease latestStableReleaseList) {
+        this.latestStableReleaseList = latestStableReleaseList;
+    }
 }

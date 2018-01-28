@@ -1,6 +1,7 @@
 package com.dev.rahul.liboio.ui.activity.main.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,17 +9,20 @@ import android.view.ViewGroup;
 
 import com.dev.rahul.liboio.R;
 import com.dev.rahul.liboio.pojo.Platforms;
+import com.dev.rahul.liboio.ui.activity.projects.ProjectsActivity;
 import com.dev.rahul.liboio.ui.base.BaseAdapter;
 import com.dev.rahul.liboio.ui.base.BaseHolder;
+import com.dev.rahul.liboio.utility.LibConstants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by rahul on 14/1/18.
  */
 
-public class PlatformsAdapter<T extends PlatformsAdapter.PlatformHolder, E extends Platforms, P extends PlatformAdapterMVP.IPlatformsAdapterPresenter<T,E>>
+public class PlatformsAdapter<T extends PlatformsAdapter.PlatformHolder, E extends Platforms, P extends PlatformsAdapterMVP.IPlatformsAdapterPresenter<T,E>>
         extends BaseAdapter<T,E,P> {
 
     private P presenter;
@@ -38,7 +42,7 @@ public class PlatformsAdapter<T extends PlatformsAdapter.PlatformHolder, E exten
         );
     }
 
-    public class PlatformHolder extends BaseHolder implements PlatformAdapterMVP.IPlatformAdapterView {
+    public class PlatformHolder extends BaseHolder implements PlatformsAdapterMVP.IPlatformAdapterView {
 
         @BindView(R.id.tvName)
         AppCompatTextView tvName;
@@ -52,14 +56,13 @@ public class PlatformsAdapter<T extends PlatformsAdapter.PlatformHolder, E exten
         public PlatformHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+        }
 
-            /*itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    CAnimator.getRippleAnim(v).start();
-                }
-            });*/
+        @OnClick(R.id.cardViewPlatforms)
+        public void viewProjectList() {
+            Intent intent = new Intent(context, ProjectsActivity.class);
+            intent.putExtra(LibConstants.PLATFORMS, tvName.getText().toString());
+            context.startActivity(intent);
         }
 
         @Override

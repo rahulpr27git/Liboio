@@ -6,7 +6,7 @@ package com.dev.rahul.liboio.api;
 
 public abstract class Libraries {
 
-    public static final String API_KEY = "c548696ba93b4cd359c3d2bd1d235d3a";
+    private static final String API_KEY = "c548696ba93b4cd359c3d2bd1d235d3a";
 
     public static String getAPIKey() {
         return API_KEY;
@@ -15,4 +15,6 @@ public abstract class Libraries {
     public static final String MAIN_URL = "https://libraries.io/api/";
 
     public static final String PLATFORMS = "platforms";
+
+    public static final String SEARCH = "search";
 }
