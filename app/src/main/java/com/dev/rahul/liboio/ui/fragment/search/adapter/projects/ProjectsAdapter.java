@@ -1,6 +1,8 @@
-package com.dev.rahul.liboio.ui.fragment.search.adapter.search;
+package com.dev.rahul.liboio.ui.fragment.search.adapter.projects;
 
 import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,10 @@ import com.dev.rahul.liboio.pojo.Projects;
 import com.dev.rahul.liboio.ui.base.BaseAdapter;
 import com.dev.rahul.liboio.ui.base.BaseHolder;
 import com.dev.rahul.liboio.ui.fragment.search.SearchMVP;
+import com.dev.rahul.liboio.ui.fragment.search.adapter.keywords.KeywordAdapter;
+import com.dev.rahul.liboio.ui.fragment.search.adapter.keywords.KeywordAdapterPresenter;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,13 +25,13 @@ import butterknife.ButterKnife;
  * Created by rahul on 27/1/18.
  */
 
-public class SearchAdapter<T extends SearchAdapter.SearchHolder,E extends Projects, P extends SearchAdapterMVP.ISearchAdapterPresenter<T,E>>
+public class ProjectsAdapter<T extends ProjectsAdapter.ProjectsHolder,E extends Projects, P extends ProjectsAdapterMVP.IProjectsAdapterPresenter<T,E>>
         extends BaseAdapter<T,E,P>{
 
     private P presenter;
     private SearchMVP.ISearchView parentView;
 
-    public SearchAdapter(P presenter, SearchMVP.ISearchView parentView) {
+    public ProjectsAdapter(P presenter, SearchMVP.ISearchView parentView) {
         super(presenter);
         this.presenter = presenter;
         this.parentView = parentView;
@@ -33,12 +39,12 @@ public class SearchAdapter<T extends SearchAdapter.SearchHolder,E extends Projec
 
     @Override
     public T getHolder(ViewGroup parent, int viewType) {
-        return (T) new SearchHolder(
+        return (T) new ProjectsHolder(
                 LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_projects,parent,false)
         );
     }
 
-    public class SearchHolder extends BaseHolder implements SearchAdapterMVP.ISearchAdapterView{
+    public class ProjectsHolder extends BaseHolder implements ProjectsAdapterMVP.IProjectsAdapterView {
 
         @BindView(R.id.tvName)
         AppCompatTextView tvName;
@@ -48,6 +54,8 @@ public class SearchAdapter<T extends SearchAdapter.SearchHolder,E extends Projec
         AppCompatTextView tvStar;
         @BindView(R.id.tvFork)
         AppCompatTextView tvFork;
+        @BindView(R.id.recyclerKeyword)
+        RecyclerView recyclerKeyword;
 
         @BindView(R.id.includeDescription)
         View includeDescription;
@@ -63,9 +71,16 @@ public class SearchAdapter<T extends SearchAdapter.SearchHolder,E extends Projec
         IncludeLayout versionView;
         IncludeLayout licenseView;
 
-        public SearchHolder(View itemView) {
+        public ProjectsHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+
+            recyclerKeyword.setHasFixedSize(true);
+            recyclerKeyword.setLayoutManager(new LinearLayoutManager(
+                    parentView.getBaseContext(),
+                    LinearLayoutManager.HORIZONTAL,false
+            ));
+            recyclerKeyword.setNestedScrollingEnabled(true);
 
             descriptionView = new IncludeLayout();
             dateView = new IncludeLayout();
@@ -117,6 +132,11 @@ public class SearchAdapter<T extends SearchAdapter.SearchHolder,E extends Projec
         public void setLicense(String license) {
             licenseView.tvTitle.setText("Normalized License");
             licenseView.tvName.setText(license);
+        }
+
+        @Override
+        public void setKeywords(List<String> list) {
+            recyclerKeyword.setAdapter(new KeywordAdapter(new KeywordAdapterPresenter(list)));
         }
     }
 

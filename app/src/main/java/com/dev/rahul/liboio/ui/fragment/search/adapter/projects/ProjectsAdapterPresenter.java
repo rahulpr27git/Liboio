@@ -1,4 +1,4 @@
-package com.dev.rahul.liboio.ui.fragment.search.adapter.search;
+package com.dev.rahul.liboio.ui.fragment.search.adapter.projects;
 
 import com.dev.rahul.liboio.pojo.Projects;
 import com.dev.rahul.liboio.ui.base.BaseAdapterPresenter;
@@ -10,10 +10,10 @@ import java.util.List;
  * Created by rahul on 27/1/18.
  */
 
-public class SearchAdapterPresenter<T extends SearchAdapter.SearchHolder, E extends Projects>
-        extends BaseAdapterPresenter<T,E> implements SearchAdapterMVP.ISearchAdapterPresenter<T,E> {
+public class ProjectsAdapterPresenter<T extends ProjectsAdapter.ProjectsHolder, E extends Projects>
+        extends BaseAdapterPresenter<T,E> implements ProjectsAdapterMVP.IProjectsAdapterPresenter<T,E> {
 
-    public SearchAdapterPresenter(List<E> list) {
+    public ProjectsAdapterPresenter(List<E> list) {
         super(list);
     }
 
@@ -33,6 +33,7 @@ public class SearchAdapterPresenter<T extends SearchAdapter.SearchHolder, E exte
         );
         holder.setVersion(projects.getLatestReleaseNumber());
         holder.setLicense(projects.getNormalizedLicenses().toString());
+        holder.setKeywords(projects.getKeywords());
     }
 
     @Override

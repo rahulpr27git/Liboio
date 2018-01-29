@@ -96,6 +96,17 @@
                     android:text="@string/dummy_number"
                     android:drawableLeft="@drawable/ic_code_fork_symbol"/>
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5px"
+                android:layout_margin="5dp"
+                android:background="@color/dividerColor"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerKeyword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </FrameLayout>

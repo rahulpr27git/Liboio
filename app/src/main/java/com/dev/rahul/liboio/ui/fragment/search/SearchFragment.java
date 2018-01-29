@@ -7,13 +7,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.dev.rahul.liboio.R;
 import com.dev.rahul.liboio.pojo.Projects;
 import com.dev.rahul.liboio.ui.base.BaseFragment;
-import com.dev.rahul.liboio.ui.fragment.search.adapter.search.SearchAdapter;
-import com.dev.rahul.liboio.ui.fragment.search.adapter.search.SearchAdapterPresenter;
+import com.dev.rahul.liboio.ui.fragment.search.adapter.projects.ProjectsAdapter;
+import com.dev.rahul.liboio.ui.fragment.search.adapter.projects.ProjectsAdapterPresenter;
+import com.dev.rahul.liboio.utility.EndlessRecyclerViewScrollListener;
 
 import java.util.List;
 
@@ -31,7 +33,9 @@ public class SearchFragment extends BaseFragment implements SearchMVP.ISearchVie
     @BindView(R.id.recyclerProjects)
     RecyclerView recyclerProjects;
 
+    private int pageNumber = 1;
     private SearchPresenter presenter;
+    private ProjectsAdapterPresenter projectsAdapterPresenter;
 
     @Override
     public int getLayoutRes() {
@@ -40,17 +44,33 @@ public class SearchFragment extends BaseFragment implements SearchMVP.ISearchVie
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this,view);
 
         recyclerProjects.setHasFixedSize(true);
-        recyclerProjects.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
+        recyclerProjects.setLayoutManager(linearLayoutManager);
+        recyclerProjects.setOnScrollListener(new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                ++pageNumber;
+                presenter.searchWithPlatformName();
+            }
+        });
 
         presenter = new SearchPresenter(new SearchRepository());
         presenter.onAttach(this);
 
         presenter.searchWithPlatformName();
 
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.e(TAG, "onSaveInstanceState is called");
     }
 
     @Override
@@ -60,8 +80,17 @@ public class SearchFragment extends BaseFragment implements SearchMVP.ISearchVie
 
     @Override
     public void showSearchResult(List<Projects> list) {
-        recyclerProjects.setAdapter(
-                new SearchAdapter(new SearchAdapterPresenter(list),this)
-        );
+        projectsAdapterPresenter = new ProjectsAdapterPresenter(list);
+        recyclerProjects.setAdapter(new ProjectsAdapter(projectsAdapterPresenter, this));
+    }
+
+    @Override
+    public void addMoreSearchResult(List<Projects> list) {
+        projectsAdapterPresenter.addNewItems(list);
+    }
+
+    @Override
+    public int getPageNumber() {
+        return pageNumber;
     }
 }

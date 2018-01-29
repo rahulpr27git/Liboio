@@ -16,4 +16,5 @@ public interface IBaseAdapterPresenter<T extends BaseHolder, E extends Object> {
     void addNewItems(List<E> listNewItems);
     void addItem(E data);
     void removeItem(int position);
+    List<E> getAllElements();
 }

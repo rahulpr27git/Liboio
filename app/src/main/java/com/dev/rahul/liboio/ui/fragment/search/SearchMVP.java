@@ -20,6 +20,8 @@ public interface SearchMVP {
 
     interface ISearchView extends IBaseView {
         void showSearchResult(List<Projects> list);
+        void addMoreSearchResult(List<Projects> list);
+        int getPageNumber();
     }
 
     interface ISearchPresenter<V extends ISearchView> extends IBasePresenter<V> {

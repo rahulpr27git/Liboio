@@ -48,4 +48,9 @@ public abstract class BaseAdapterPresenter<T extends BaseHolder, E extends Objec
         list.remove(position);
         adapter.notifyItemRemoved(position);
     }
+
+    @Override
+    public List<E> getAllElements() {
+        return list;
+    }
 }

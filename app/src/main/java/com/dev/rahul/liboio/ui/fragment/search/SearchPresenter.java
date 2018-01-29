@@ -2,6 +2,7 @@ package com.dev.rahul.liboio.ui.fragment.search;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.dev.rahul.liboio.api.Libraries;
 import com.dev.rahul.liboio.pojo.Projects;
@@ -47,6 +48,10 @@ public class SearchPresenter<V extends SearchMVP.ISearchView> extends BasePresen
             HashMap<String,String> queryParams = new HashMap<>();
             queryParams.put(LibConstants.PLATFORMS, bundle.getString(LibConstants.PLATFORMS));
             queryParams.put(LibConstants.API_KEY, Libraries.getAPIKey());
+            queryParams.put(LibConstants.PAGE, String.valueOf(getBaseView().getPageNumber()));
+            queryParams.put(LibConstants.PER_PAGE,LibConstants.PER_PAGE_VALUE);
+
+            Log.e(TAG, "searchWithPlatformName params : " + queryParams.toString());
 
             search(queryParams);
         }
@@ -74,6 +79,8 @@ public class SearchPresenter<V extends SearchMVP.ISearchView> extends BasePresen
                         getBaseView().onHideLoading();
                         if (list.isEmpty()) {
                             getBaseView().onFailed("No projects available");
+                        } else if (getBaseView().getPageNumber() > 1){
+                            getBaseView().addMoreSearchResult(list);
                         } else {
                             getBaseView().showSearchResult(list);
                         }

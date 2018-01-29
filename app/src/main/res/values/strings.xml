@@ -11,4 +11,5 @@
     <string name="dummy_number">12k</string>
     <string name="label_latest_release">latest release</string>
     <string name="lable_title">title</string>
+    <string name="label_keyword">#keyword</string>
 </resources>
