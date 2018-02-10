@@ -23,6 +23,5 @@ public interface ProjectsAdapterMVP {
 
     interface IProjectsAdapterPresenter<T extends ProjectsAdapter.ProjectsHolder, E extends Projects>
             extends IBaseAdapterPresenter<T,E>{
-
     }
 }

@@ -15,6 +15,7 @@ public interface PlatformsAdapterMVP {
         void setDefaultLanguage(String defaultLanguage);
         void setUrl(String url);
         void setProjects(String counts);
+        void setDynamicColor(String color);
     }
 
     interface IPlatformsAdapterPresenter<T extends PlatformsAdapter.PlatformHolder, E extends Platforms>

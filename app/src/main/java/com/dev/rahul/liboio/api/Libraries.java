@@ -17,4 +17,6 @@ public abstract class Libraries {
     public static final String PLATFORMS = "platforms";
 
     public static final String SEARCH = "search";
+
+    public static final String DEPENDENCIES = "{platform}/{name}/latest/dependencies";
 }

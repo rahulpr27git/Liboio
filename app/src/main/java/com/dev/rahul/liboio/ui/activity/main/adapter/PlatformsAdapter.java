@@ -2,6 +2,7 @@ package com.dev.rahul.liboio.ui.activity.main.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,6 +84,11 @@ public class PlatformsAdapter<T extends PlatformsAdapter.PlatformHolder, E exten
         @Override
         public void setProjects(String counts) {
             tvCount.setText(counts);
+        }
+
+        @Override
+        public void setDynamicColor(String color) {
+            tvCount.setBackgroundColor(Color.parseColor(color));
         }
     }
 }

@@ -33,6 +33,10 @@
                     android:gravity="center"
                     android:textSize="22sp"
                     android:text="0K"
+                    android:shadowColor="@color/primaryTextColor"
+                    android:shadowRadius="1"
+                    android:shadowDx="1"
+                    android:shadowDy="1"
                     android:textColor="@color/lightPrimaryColor"
                     android:background="@color/secondaryTextColor"
                     app:fontFamily="@font/lato_bold" />

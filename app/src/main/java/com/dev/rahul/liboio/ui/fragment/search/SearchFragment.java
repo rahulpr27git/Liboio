@@ -75,7 +75,8 @@ public class SearchFragment extends BaseFragment implements SearchMVP.ISearchVie
 
     @Override
     public void onRefresh() {
-
+        pageNumber = 1;
+        presenter.searchWithPlatformName();
     }
 
     @Override

@@ -42,6 +42,49 @@ public class Projects {
     @SerializedName("latest_stable_release")
     private LatestStableRelease latestStableReleaseList;
 
+    @SerializedName("dependencies")
+    private List<Dependencies> dependenciesList;
+
+    @SerializedName("dependents_count")
+    private Integer dependentsCount = 0;
+
+    @SerializedName("dependent_repos_count")
+    private Integer dependentReposCount = 0;
+
+    @SerializedName("versions")
+    private List<Versions> versionsList;
+
+    public Integer getDependentsCount() {
+        return dependentsCount;
+    }
+
+    public void setDependentsCount(Integer dependentsCount) {
+        this.dependentsCount = dependentsCount;
+    }
+
+    public Integer getDependentReposCount() {
+        return dependentReposCount;
+    }
+
+    public void setDependentReposCount(Integer dependentReposCount) {
+        this.dependentReposCount = dependentReposCount;
+    }
+
+    public List<Versions> getVersionsList() {
+        return versionsList;
+    }
+
+    public void setVersionsList(List<Versions> versionsList) {
+        this.versionsList = versionsList;
+    }
+
+    public List<Dependencies> getDependenciesList() {
+        return dependenciesList;
+    }
+
+    public void setDependenciesList(List<Dependencies> dependenciesList) {
+        this.dependenciesList = dependenciesList;
+    }
 
     public String getName() {
         return name;

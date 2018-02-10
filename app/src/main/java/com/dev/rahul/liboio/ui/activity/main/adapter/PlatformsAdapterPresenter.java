@@ -26,10 +26,14 @@ public class PlatformsAdapterPresenter<T extends PlatformsAdapter.PlatformHolder
         holder.setDefaultLanguage(platforms.getDefaultLanguage());
         holder.setUrl(platforms.getHomePage());
         holder.setProjects(LibUtil.formattedCount(platforms.getProjectCount()));
+        holder.setDynamicColor(platforms.getColor());
     }
 
     @Override
     public void onRecycle(T holder) {
-
+        holder.tvCount.setText(null);
+        holder.tvUrl.setText(null);
+        holder.tvDefaultLanguage.setText(null);
+        holder.tvName.setText(null);
     }
 }

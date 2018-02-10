@@ -12,4 +12,5 @@
     <string name="label_latest_release">latest release</string>
     <string name="lable_title">title</string>
     <string name="label_keyword">#keyword</string>
+    <string name="label_source_rank">SourceRank</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.dev.rahul.liboio.ui.fragment.search.adapter.projects;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,16 +12,20 @@ import android.view.ViewGroup;
 
 import com.dev.rahul.liboio.R;
 import com.dev.rahul.liboio.pojo.Projects;
+import com.dev.rahul.liboio.ui.activity.project_details.ProjectDetailsActivity;
+import com.dev.rahul.liboio.ui.activity.project_details.ProjectDetailsPresenter;
 import com.dev.rahul.liboio.ui.base.BaseAdapter;
 import com.dev.rahul.liboio.ui.base.BaseHolder;
 import com.dev.rahul.liboio.ui.fragment.search.SearchMVP;
 import com.dev.rahul.liboio.ui.fragment.search.adapter.keywords.KeywordAdapter;
 import com.dev.rahul.liboio.ui.fragment.search.adapter.keywords.KeywordAdapterPresenter;
+import com.dev.rahul.liboio.utility.LibConstants;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by rahul on 27/1/18.
@@ -91,6 +97,20 @@ public class ProjectsAdapter<T extends ProjectsAdapter.ProjectsHolder,E extends 
             ButterKnife.bind(dateView,includeDate);
             ButterKnife.bind(versionView,includeVersion);
             ButterKnife.bind(licenseView,includeLicense);
+        }
+
+        @OnClick(R.id.cardViewProjects)
+        public void onProjectItemClicked() {
+            Context context = parentView.getBaseContext();
+            Projects projects = presenter.getAllElements().get(getAdapterPosition());
+
+            Intent intent = new Intent(context, ProjectDetailsActivity.class);
+            intent.putExtra(LibConstants.RANK, projects.getRank());
+            intent.putExtra(LibConstants.PLATFORM_NAME, projects.getPlatform());
+            intent.putExtra(LibConstants.NAME, projects.getName());
+            intent.putExtra(LibConstants.LICENCES, projects.getNormalizedLicenses().toString());
+            intent.putExtra(LibConstants.REPOSITORY_URL, projects.getRepositoryUrl());
+            context.startActivity(intent);
         }
 
         @Override
