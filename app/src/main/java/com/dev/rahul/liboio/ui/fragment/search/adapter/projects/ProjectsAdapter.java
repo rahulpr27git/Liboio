@@ -109,7 +109,16 @@ public class ProjectsAdapter<T extends ProjectsAdapter.ProjectsHolder,E extends 
             intent.putExtra(LibConstants.PLATFORM_NAME, projects.getPlatform());
             intent.putExtra(LibConstants.NAME, projects.getName());
             intent.putExtra(LibConstants.LICENCES, projects.getNormalizedLicenses().toString());
-            intent.putExtra(LibConstants.REPOSITORY_URL, projects.getRepositoryUrl());
+            intent.putExtra(LibConstants.DESCRIPTION, projects.getDescription().toString());
+
+            String url = "";
+            if (projects.getHomepage().contains("github")) {
+                url = projects.getHomepage();
+            } else{
+                url = projects.getRepositoryUrl();
+            }
+
+            intent.putExtra(LibConstants.REPOSITORY_URL, url);
             context.startActivity(intent);
         }
 

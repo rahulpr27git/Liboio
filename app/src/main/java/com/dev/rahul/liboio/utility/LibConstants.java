@@ -11,6 +11,7 @@ public interface LibConstants {
 
     //==A
     String API_KEY = "api_key";
+    String ARTICLE = "article";
     //==D
     String DESCRIPTION = "description";
     //==L

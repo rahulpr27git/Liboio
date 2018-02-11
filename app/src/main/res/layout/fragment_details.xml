@@ -7,14 +7,14 @@
 
    <RelativeLayout
        android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+       android:layout_height="match_parent"
+       android:padding="10dp">
 
        <android.support.v7.widget.AppCompatTextView
            android:id="@+id/tvSourceRankLabel"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:padding="10dp"
-           android:textSize="20sp"
+           android:textSize="35sp"
            android:textColor="@android:color/black"
            android:gravity="center_vertical"
            android:layout_alignParentLeft="true"
@@ -29,16 +29,47 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_alignParentRight="true"
-           android:padding="10dp"
+           android:paddingBottom="10dp"
            android:text="0"
            android:shadowRadius="1"
            android:shadowDy="1"
            android:shadowDx="1"
+           android:gravity="center"
            android:shadowColor="@android:color/black"
            android:textSize="40sp"
            app:fontFamily="@font/lato_bold"/>
 
-   </RelativeLayout>
+       <include
+           android:id="@+id/includeDescription"
+           layout="@layout/include_title_name"
+           android:layout_height="wrap_content"
+           android:layout_width="match_parent"
+           android:layout_below="@+id/tvSourceRankLabel"/>
 
+       <include
+           android:id="@+id/includeLicense"
+           layout="@layout/include_title_name"
+           android:layout_height="wrap_content"
+           android:layout_width="match_parent"
+           android:layout_below="@+id/includeDescription"/>
+
+       <android.support.v7.widget.AppCompatTextView
+           android:id="@+id/tvDocumentationTitle"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="@string/label_title"
+           android:layout_below="@id/includeLicense"
+           android:layout_marginTop="10dp"
+           app:fontFamily="@font/lato_bold"
+           android:textColor="@android:color/black"/>
+
+       <im.delight.android.webview.AdvancedWebView
+           android:id="@+id/webView"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_marginTop="10dp"
+           android:layout_below="@id/tvDocumentationTitle"/>
+
+   </RelativeLayout>
 
 </android.support.v4.widget.NestedScrollView>

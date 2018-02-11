@@ -1,8 +1,10 @@
 package com.dev.rahul.liboio.api;
 
+import com.dev.rahul.liboio.pojo.Contributors;
 import com.dev.rahul.liboio.pojo.Platforms;
 import com.dev.rahul.liboio.pojo.Projects;
 import com.dev.rahul.liboio.utility.LibConstants;
+import com.dev.rahul.liboio.utility.LibUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +13,7 @@ import io.reactivex.Single;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -34,6 +37,13 @@ public interface LibrariesService {
             @Path("platform") String platform,
             @Path("name") String name,
             @QueryMap HashMap<String,String> queryMaps
+    );
+
+    @GET(Libraries.CONTRIBUTORS)
+    Single<List<Contributors>> getContributors(
+            @Path("platform") String platform,
+            @Path("name") String name,
+            @Query("api_key") String apiKey
     );
 
     Retrofit retrofit = new Retrofit.Builder()

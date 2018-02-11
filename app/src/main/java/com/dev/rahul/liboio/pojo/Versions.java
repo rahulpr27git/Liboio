@@ -8,16 +8,16 @@ import com.google.gson.annotations.SerializedName;
 
 public class Versions {
 
-    private Integer number = 0;
+    private String number = "0";
 
     @SerializedName("published_at")
     private String publishedAt = "";
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

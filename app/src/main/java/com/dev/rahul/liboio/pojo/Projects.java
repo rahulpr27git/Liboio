@@ -13,7 +13,7 @@ public class Projects {
     private String name = "";
     private String platform = "";
     private String description = "";
-    private String homeapage = "";
+    private String homepage = "";
 
     @SerializedName("repository_url")
     private String repositoryUrl = "";
@@ -110,12 +110,12 @@ public class Projects {
         this.description = description;
     }
 
-    public String getHomeapage() {
-        return homeapage;
+    public String getHomepage() {
+        return homepage;
     }
 
-    public void setHomeapage(String homeapage) {
-        this.homeapage = homeapage;
+    public void setHomepage(String homepage) {
+        this.homepage = homepage;
     }
 
     public String getRepositoryUrl() {

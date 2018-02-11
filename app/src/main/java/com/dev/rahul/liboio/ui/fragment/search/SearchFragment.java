@@ -44,6 +44,7 @@ public class SearchFragment extends BaseFragment implements SearchMVP.ISearchVie
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this,view);
 
         recyclerProjects.setHasFixedSize(true);
@@ -62,7 +63,6 @@ public class SearchFragment extends BaseFragment implements SearchMVP.ISearchVie
 
         presenter.searchWithPlatformName();
 
-        super.onViewCreated(view, savedInstanceState);
     }
 
 
