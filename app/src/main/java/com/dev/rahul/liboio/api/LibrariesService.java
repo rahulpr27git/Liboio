@@ -43,7 +43,7 @@ public interface LibrariesService {
     Single<List<Contributors>> getContributors(
             @Path("platform") String platform,
             @Path("name") String name,
-            @Query("api_key") String apiKey
+            @QueryMap HashMap<String,String> queryMaps
     );
 
     Retrofit retrofit = new Retrofit.Builder()

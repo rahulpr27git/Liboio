@@ -1,10 +1,12 @@
 package com.dev.rahul.liboio.ui.fragment.contributor;
 
+import android.util.Half;
 import android.util.Log;
 
 import com.dev.rahul.liboio.api.LibrariesService;
 import com.dev.rahul.liboio.pojo.Contributors;
 
+import java.util.HashMap;
 import java.util.List;
 
 import io.reactivex.Scheduler;
@@ -21,16 +23,17 @@ public class ContributorsRepository implements ContributorsMVP.IContributorsRepo
     public static final String TAG = ContributorsRepository.class.getSimpleName();
 
     @Override
-    public Single<List<Contributors>> getContributorsList(String platformName, String projectName, String apiKey) {
+    public Single<List<Contributors>> getContributorsList(String platformName, String projectName,
+                                                          HashMap<String,String> queryMap) {
 
         Log.e(TAG, "platform : " + platformName);
         Log.e(TAG, "project : " + projectName);
-        Log.e(TAG, "api_key : " + apiKey);
+        Log.e(TAG, "api_key : " + queryMap.toString());
 
         return LibrariesService.LIBRARIES_SERVICE.getContributors(
                         platformName,
                         projectName,
-                        apiKey
+                        queryMap
                 )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());

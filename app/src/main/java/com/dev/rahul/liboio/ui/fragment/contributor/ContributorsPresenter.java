@@ -9,6 +9,7 @@ import com.dev.rahul.liboio.ui.base.BasePresenter;
 import com.dev.rahul.liboio.ui.base.IBaseView;
 import com.dev.rahul.liboio.utility.LibConstants;
 
+import java.util.HashMap;
 import java.util.List;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -43,18 +44,33 @@ public class ContributorsPresenter<V extends ContributorsMVP.IContributorsView> 
         Bundle bundle = getBaseView().getBundleData();
         if (bundle != null) {
 
+            HashMap<String,String> queryMap = new HashMap<>();
+            queryMap.put(LibConstants.API_KEY, Libraries.getAPIKey());
+            queryMap.put(LibConstants.PER_PAGE, "30");
+            queryMap.put(LibConstants.PAGE,getBaseView().getPageNumber());
+
+            getBaseView().onShowLoading();
+
             DisposableSingleObserver<List<Contributors>> disposableSingleObserver = repository.getContributorsList(
                     bundle.getString(LibConstants.PLATFORM_NAME),
                     bundle.getString(LibConstants.NAME),
-                    Libraries.getAPIKey()
+                    queryMap
             ).subscribeWith(new DisposableSingleObserver<List<Contributors>>() {
                 @Override
                 public void onSuccess(List<Contributors> contributors) {
-                    Log.e(TAG, "fetchContributorsList size : " + contributors.size());
+
+                    if (getBaseView().getPageNumber().equals("1"))
+                        getBaseView().showContributors(contributors);
+                    else
+                        getBaseView().addNewList(contributors);
+
+                    getBaseView().onHideLoading();
                 }
 
                 @Override
                 public void onError(Throwable e) {
+                    getBaseView().onHideLoading();
+                    getBaseView().onError(e.getMessage());
                     e.printStackTrace();
                 }
             });

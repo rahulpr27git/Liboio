@@ -20,4 +20,9 @@ public abstract class Libraries {
 
     public static final String DEPENDENCIES = "{platform}/{name}/latest/dependencies";
     public static final String CONTRIBUTORS = "{platform}/{name}/contributors";
+
+
+    public static String getGithubProfileUrl(String login) {
+        return "https://avatars3.githubusercontent.com/u/" + login + "?v=4";
+    }
 }
