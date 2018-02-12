@@ -2,6 +2,8 @@ package com.dev.rahul.liboio.ui.fragment.dependencies;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,10 +33,14 @@ public class DependenciesFragment extends BaseFragment {
         return fragment;
     }
 
-
     @Override
     public int getLayoutRes() {
         return R.layout.fragment_dependencies;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override
