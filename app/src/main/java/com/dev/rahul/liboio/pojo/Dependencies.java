@@ -19,8 +19,8 @@ public class Dependencies {
     private String latestStable;
 
     private String latest;
-    private String deprecated;
-    private String outdated;
+    private Boolean deprecated;
+    private Boolean outdated;
     private String filepath;
     private String kind;
 
@@ -72,19 +72,19 @@ public class Dependencies {
         this.latest = latest;
     }
 
-    public String getDeprecated() {
+    public Boolean getDeprecated() {
         return deprecated;
     }
 
-    public void setDeprecated(String deprecated) {
+    public void setDeprecated(Boolean deprecated) {
         this.deprecated = deprecated;
     }
 
-    public String getOutdated() {
+    public Boolean getOutdated() {
         return outdated;
     }
 
-    public void setOutdated(String outdated) {
+    public void setOutdated(Boolean outdated) {
         this.outdated = outdated;
     }
 
