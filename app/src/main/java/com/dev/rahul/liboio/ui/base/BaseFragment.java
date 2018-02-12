@@ -38,6 +38,11 @@ public abstract class BaseFragment extends Fragment implements IBaseView, SwipeR
     }
 
     @Override
+    public void onAttachSwipeRefreshLayout(SwipeRefreshLayout swipeRefreshLayout) {
+        baseActivity.onAttachSwipeRefreshLayout(swipeRefreshLayout);
+    }
+
+    @Override
     public void enableBackButton() {
         baseActivity.enableBackButton();
     }

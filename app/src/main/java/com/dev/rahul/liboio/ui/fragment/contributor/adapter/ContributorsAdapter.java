@@ -57,6 +57,7 @@ public class ContributorsAdapter extends BaseAdapter {
             GlideApp.with(imgContributors.getContext())
                     .load(url)
                     .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                    .thumbnail(0.25f)
                     .centerCrop()
                     .into(imgContributors);
         }

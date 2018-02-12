@@ -20,19 +20,25 @@ import android.widget.Toast;
 public abstract class BaseActivity extends AppCompatActivity
         implements IBaseView, SwipeRefreshLayout.OnRefreshListener {
 
+    private SwipeRefreshLayout swipeRefreshLayout;
     private Context context = this;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutRes());
+    }
+
+    @Override
+    public void onAttachSwipeRefreshLayout(SwipeRefreshLayout swipeRefreshLayout) {
+        this.swipeRefreshLayout = swipeRefreshLayout;
         setSwipeListener(this);
     }
 
     @Override
     public void setSwipeListener(SwipeRefreshLayout.OnRefreshListener listener) {
-        if (getSwipeRefreshView() != null)
-            getSwipeRefreshView().setOnRefreshListener(listener);
+        if (swipeRefreshLayout != null)
+            swipeRefreshLayout.setOnRefreshListener(listener);
     }
 
     @Override
@@ -59,12 +65,8 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     public void onShowLoading() {
-        if (getSwipeRefreshView() != null)
-            getSwipeRefreshView().setRefreshing(true);
-        if (getRetryView() != null)
-            getRetryView().setVisibility(View.GONE);
-        if (getDataView() != null)
-            getDataView().setVisibility(View.GONE);
+        if (swipeRefreshLayout != null)
+            swipeRefreshLayout.setRefreshing(true);
     }
 
     @Override
@@ -78,8 +80,8 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     public void onHideLoading() {
-        if (getSwipeRefreshView() != null)
-            getSwipeRefreshView().setRefreshing(false);
+        if (swipeRefreshLayout != null)
+            swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
@@ -119,9 +121,13 @@ public abstract class BaseActivity extends AppCompatActivity
         return getIntent() != null ? getIntent().getExtras() : null;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        context = null;
+        swipeRefreshLayout = null;
+    }
+
     public abstract int getLayoutRes();
     public abstract int getFragmentContainerId();
-    public abstract SwipeRefreshLayout getSwipeRefreshView();
-    public abstract View getRetryView();
-    public abstract View getDataView();
 }

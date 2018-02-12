@@ -39,24 +39,10 @@ public class MainActivity extends BaseActivity implements MainMVP.IMainView {
     }
 
     @Override
-    public SwipeRefreshLayout getSwipeRefreshView() {
-        return swipeRefresh;
-    }
-
-    @Override
-    public View getRetryView() {
-        return null;
-    }
-
-    @Override
-    public View getDataView() {
-        return null;
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+        onAttachSwipeRefreshLayout(swipeRefresh);
         context = this;
 
         getSupportActionBar().setSubtitle("Platforms");
@@ -77,7 +63,6 @@ public class MainActivity extends BaseActivity implements MainMVP.IMainView {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.onDestroy();
     }
 
     @Override

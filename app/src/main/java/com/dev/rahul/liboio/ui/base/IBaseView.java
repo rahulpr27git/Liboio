@@ -20,6 +20,7 @@ public interface IBaseView {
     void setTitle(String title);
     void setSubTitle(String subTitle);
 
+    void onAttachSwipeRefreshLayout(SwipeRefreshLayout swipeRefreshLayout);
     void setSwipeListener(SwipeRefreshLayout.OnRefreshListener listener);
 
     void onShowLoading();

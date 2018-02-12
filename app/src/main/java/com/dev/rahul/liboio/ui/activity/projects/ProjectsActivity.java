@@ -28,24 +28,10 @@ public class ProjectsActivity extends BaseActivity {
     }
 
     @Override
-    public SwipeRefreshLayout getSwipeRefreshView() {
-        return swipeRefresh;
-    }
-
-    @Override
-    public View getRetryView() {
-        return null;
-    }
-
-    @Override
-    public View getDataView() {
-        return null;
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+        onAttachSwipeRefreshLayout(swipeRefresh);
 
         Bundle bundle = getBundleData();
         if (bundle != null) {

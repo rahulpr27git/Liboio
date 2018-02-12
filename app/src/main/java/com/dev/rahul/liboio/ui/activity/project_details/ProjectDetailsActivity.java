@@ -45,29 +45,10 @@ public class ProjectDetailsActivity extends BaseActivity implements ProjectDetai
     }
 
     @Override
-    public SwipeRefreshLayout getSwipeRefreshView() {
-        return swipeRefresh;
-    }
-
-    @Override
-    public View getRetryView() {
-        return null;
-    }
-
-    @Override
-    public View getDataView() {
-        return null;
-    }
-
-    @Override
-    public void onRefresh() {
-
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
+        onAttachSwipeRefreshLayout(swipeRefresh);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle("Project");
@@ -98,5 +79,10 @@ public class ProjectDetailsActivity extends BaseActivity implements ProjectDetai
     public boolean onTabSelected(int position, boolean wasSelected) {
         presenter.onTabSelected(position,wasSelected);
         return true;
+    }
+
+    @Override
+    public void onRefresh() {
+
     }
 }
