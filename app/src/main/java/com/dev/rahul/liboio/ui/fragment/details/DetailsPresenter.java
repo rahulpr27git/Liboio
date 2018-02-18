@@ -33,7 +33,7 @@ public class DetailsPresenter<V extends DetailsMVP.IDetailsView> extends BasePre
     public void onDestroy() {
         DetailsFragment.fragment = null;
         compositeDisposable.clear();
-        getBaseView().onDetachFragment(DetailsFragment.TAG);
+        getBaseView().onRemoveFragment(DetailsFragment.TAG);
     }
 
     @Override

@@ -86,6 +86,7 @@ public class DetailsFragment extends BaseFragment implements DetailsMVP.IDetails
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this,view);
+        Log.e(TAG, "onViewCreated is called");
 
         DESCRIPTION = new IncludeLayout();
         LICENSE = new IncludeLayout();
@@ -96,6 +97,12 @@ public class DetailsFragment extends BaseFragment implements DetailsMVP.IDetails
         presenter.onAttach(this);
         presenter.fetchData();
         presenter.fetchDocumentation();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.e(TAG, "onSaveInstanceState is called");
     }
 
     @Override
@@ -137,6 +144,7 @@ public class DetailsFragment extends BaseFragment implements DetailsMVP.IDetails
 
     @Override
     public void onDestroyView() {
+        Log.e(TAG, "onDestroyView is called");
         presenter.onDestroy();
         super.onDestroyView();
     }
