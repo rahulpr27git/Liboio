@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.dev.rahul.liboio.ui.fragment.contributor.ContributorsFragment;
+
 /**
  * Created by rahul on 4/1/18.
  */
@@ -100,7 +102,14 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     @Override
-    public void onAttachFragment(Fragment fragment, String tag) {
+    public void onAddFragment(@NonNull Fragment fragment, @NonNull String tag) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(getFragmentContainerId(),fragment,tag);
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onReplaceFragment(Fragment fragment, String tag) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(getFragmentContainerId(),fragment,tag);
         fragmentTransaction.commit();
@@ -108,7 +117,23 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     @Override
-    public void onDetachFragment(String tag) {
+    public void onShowFragment(@NonNull Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.show(fragment);
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onHideFragment(@NonNull String tag) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        Fragment fragment = fragmentManager.findFragmentByTag(tag);
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.hide(fragment);
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onRemoveFragment(String tag) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         Fragment fragment = fragmentManager.findFragmentByTag(tag);
 

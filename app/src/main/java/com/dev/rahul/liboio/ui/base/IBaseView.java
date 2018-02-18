@@ -30,8 +30,11 @@ public interface IBaseView {
     void onError(@NonNull String error);
     void onSuccess(@NonNull String message);
 
-    void onAttachFragment(@NonNull Fragment fragment,@NonNull String tag);
-    void onDetachFragment(@NonNull String tag);
+    void onAddFragment(@NonNull Fragment fragment, @NonNull String tag);
+    void onReplaceFragment(@NonNull Fragment fragment, @NonNull String tag);
+    void onShowFragment(@NonNull Fragment fragment);
+    void onHideFragment(@NonNull String tag);
+    void onRemoveFragment(@NonNull String tag);
 
     Bundle getBundleData();
 }

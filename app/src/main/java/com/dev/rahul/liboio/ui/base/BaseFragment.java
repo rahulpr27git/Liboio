@@ -103,13 +103,28 @@ public abstract class BaseFragment extends Fragment implements IBaseView, SwipeR
     }
 
     @Override
-    public void onAttachFragment(@NonNull Fragment fragment, @NonNull String tag) {
-        baseActivity.onAttachFragment(fragment,tag);
+    public void onAddFragment(@NonNull Fragment fragment, @NonNull String tag) {
+        baseActivity.onAddFragment(fragment, tag);
     }
 
     @Override
-    public void onDetachFragment(@NonNull String tag) {
-        baseActivity.onDetachFragment(tag);
+    public void onReplaceFragment(@NonNull Fragment fragment, @NonNull String tag) {
+        baseActivity.onReplaceFragment(fragment,tag);
+    }
+
+    @Override
+    public void onShowFragment(@NonNull Fragment fragment) {
+        baseActivity.onShowFragment(fragment);
+    }
+
+    @Override
+    public void onHideFragment(@NonNull String tag) {
+        baseActivity.onHideFragment(tag);
+    }
+
+    @Override
+    public void onRemoveFragment(@NonNull String tag) {
+        baseActivity.onRemoveFragment(tag);
     }
 
     @Override
