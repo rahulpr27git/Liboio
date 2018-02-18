@@ -6,12 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.dev.rahul.liboio.R;
 import com.dev.rahul.liboio.ui.base.BaseAdapter;
 import com.dev.rahul.liboio.ui.base.BaseHolder;
-import com.dev.rahul.liboio.ui.base.IBaseAdapterPresenter;
-import com.dev.rahul.liboio.utility.GlideApp;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,11 +54,10 @@ public class ContributorsAdapter extends BaseAdapter {
 
         @Override
         public void setProfileImage(String url) {
-            GlideApp.with(imgContributors.getContext())
+            Glide.with(imgContributors.getContext())
                     .load(url)
-                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                    .apply(RequestOptions.centerCropTransform().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC))
                     .thumbnail(0.25f)
-                    .centerCrop()
                     .into(imgContributors);
         }
     }

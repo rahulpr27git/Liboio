@@ -1,12 +1,10 @@
 package com.dev.rahul.liboio.ui.fragment.contributor;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.dev.rahul.liboio.api.Libraries;
 import com.dev.rahul.liboio.pojo.Contributors;
 import com.dev.rahul.liboio.ui.base.BasePresenter;
-import com.dev.rahul.liboio.ui.base.IBaseView;
 import com.dev.rahul.liboio.utility.LibConstants;
 
 import java.util.HashMap;
@@ -36,7 +34,7 @@ public class ContributorsPresenter<V extends ContributorsMVP.IContributorsView> 
     public void onDestroy() {
         ContributorsFragment.fragment = null;
         compositeDisposable.clear();
-        getBaseView().onDetachFragment(ContributorsFragment.TAG);
+        getBaseView().onRemoveFragment(ContributorsFragment.TAG);
     }
 
     @Override

@@ -14,4 +14,7 @@
     <string name="label_keyword">#keyword</string>
     <string name="label_source_rank">SourceRank</string>
     <string name="label_title">Title</string>
+    <string name="label_project_name">Project Name</string>
+    <string name="label_deprecated">Deprecated</string>
+    <string name="label_outdated">Outdated</string>
 </resources>

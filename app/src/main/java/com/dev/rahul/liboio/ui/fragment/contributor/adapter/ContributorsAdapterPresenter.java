@@ -1,10 +1,9 @@
 package com.dev.rahul.liboio.ui.fragment.contributor.adapter;
 
+import com.bumptech.glide.Glide;
 import com.dev.rahul.liboio.api.Libraries;
 import com.dev.rahul.liboio.pojo.Contributors;
 import com.dev.rahul.liboio.ui.base.BaseAdapterPresenter;
-import com.dev.rahul.liboio.ui.base.BaseHolder;
-import com.dev.rahul.liboio.utility.GlideApp;
 
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class ContributorsAdapterPresenter<T extends ContributorsAdapter.Contribu
 
     @Override
     public void onRecycle(T holder) {
-        GlideApp.with(holder.imgContributors.getContext())
+        Glide.with(holder.imgContributors.getContext())
                 .clear(holder.imgContributors);
     }
 }

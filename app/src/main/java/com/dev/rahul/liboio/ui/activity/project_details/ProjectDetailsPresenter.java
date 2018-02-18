@@ -43,8 +43,11 @@ public class ProjectDetailsPresenter<V extends ProjectDetailsMVP.IProjectDetails
     public void fetchAndSetDataFromIntent() {
         Bundle bundle = getBaseView().getBundleData();
         if (bundle != null) {
-            if (bundle.containsKey(LibConstants.NAME))
+            if (bundle.containsKey(LibConstants.NAME)) {
+                Log.e(TAG, "name : "+ bundle.getString(LibConstants.NAME));
+                Log.e(TAG, "platform : "+ bundle.getString(LibConstants.PLATFORM_NAME));
                 getBaseView().setSubTitle(bundle.getString(LibConstants.NAME));
+            }
         }
     }
 

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,7 @@ public class ContributorsFragment extends BaseFragment implements ContributorsMV
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this,view);
+        Log.e(TAG, "onViewCreated is called");
 
         recyclerContributors.setHasFixedSize(true);
         GridLayoutManager layout = new GridLayoutManager(getBaseContext(), 4);
@@ -80,7 +82,14 @@ public class ContributorsFragment extends BaseFragment implements ContributorsMV
     }
 
     @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.e(TAG, "onSaveInstanceState is called");
+    }
+
+    @Override
     public void onDestroyView() {
+        Log.e(TAG, "onDestroyView is called");
         presenter.onDestroy();
         super.onDestroyView();
     }
