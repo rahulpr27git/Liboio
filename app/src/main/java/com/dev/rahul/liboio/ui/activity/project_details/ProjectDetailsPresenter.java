@@ -66,14 +66,14 @@ public class ProjectDetailsPresenter<V extends ProjectDetailsMVP.IProjectDetails
         Fragment fragment = repository.getFragment(getBaseView().getBundleData())[pos];
 
         if (fragment instanceof DetailsFragment)
-            getBaseView().onAttachFragment(fragment, DetailsFragment.TAG);
+            getBaseView().onReplaceFragment(fragment, DetailsFragment.TAG);
         else if (fragment instanceof DependentsFragment)
-            getBaseView().onAttachFragment(fragment, DependentsFragment.TAG);
+            getBaseView().onReplaceFragment(fragment, DependentsFragment.TAG);
         else if (fragment instanceof DependenciesFragment)
-            getBaseView().onAttachFragment(fragment, DependenciesFragment.TAG);
+            getBaseView().onReplaceFragment(fragment, DependenciesFragment.TAG);
         else if (fragment instanceof ContributorsFragment)
-            getBaseView().onAttachFragment(fragment, ContributorsFragment.TAG);
+            getBaseView().onReplaceFragment(fragment, ContributorsFragment.TAG);
         else if (fragment instanceof RepositoryFragment)
-            getBaseView().onAttachFragment(fragment, RepositoryFragment.TAG);
+            getBaseView().onReplaceFragment(fragment, RepositoryFragment.TAG);
     }
 }

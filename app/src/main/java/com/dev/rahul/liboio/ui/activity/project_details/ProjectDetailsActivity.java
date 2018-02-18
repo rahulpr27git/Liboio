@@ -3,6 +3,7 @@ package com.dev.rahul.liboio.ui.activity.project_details;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +25,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ProjectDetailsActivity extends BaseActivity implements ProjectDetailsMVP.IProjectDetailsView, AHBottomNavigation.OnTabSelectedListener {
+
+    public static final String TAG = ProjectDetailsActivity.class.getSimpleName();
+    private String FRAGMENT_TAG = null;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;

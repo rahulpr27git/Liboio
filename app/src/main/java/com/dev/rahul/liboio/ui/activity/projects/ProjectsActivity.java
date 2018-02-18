@@ -3,7 +3,6 @@ package com.dev.rahul.liboio.ui.activity.projects;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.view.View;
 
 import com.dev.rahul.liboio.R;
 import com.dev.rahul.liboio.ui.base.BaseActivity;
@@ -37,7 +36,7 @@ public class ProjectsActivity extends BaseActivity {
         if (bundle != null) {
             Fragment fragment = new SearchFragment();
             fragment.setArguments(bundle);
-            onAttachFragment(fragment,SearchFragment.TAG);
+            onReplaceFragment(fragment,SearchFragment.TAG);
         }
 
         enableBackButton();
